@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Java Debugger — by Eslam Atya</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!--
+    Project: Java Debugger
+    Developer: Eslam Atya
+    Description: Offline version of the Java Debugger UI (client-side runner)
+    All rights reserved © 2025
+  -->
+
+  <div id="intro" class="intro">
+    <img src="assets/logo.svg" alt="logo" class="intro-logo">
+    <h1 class="intro-title"><span id="typed-name"></span></h1>
+    <div class="intro-sub">by <strong>Eslam Atya</strong></div>
+    <button id="startBtn" class="cta">Start</button>
+  </div>
+
+  <main id="app" class="app hidden" role="application">
+    <header class="app-header">
+      <div class="title-left">
+        <img src="assets/logo.svg" alt="" class="mini-logo">
+        <div class="app-title">Java Debugger</div>
+      </div>
+      <div class="meta">Developed by <strong>Eslam Atya</strong></div>
+    </header>
+
+    <section class="runner">
+      <div class="controls">
+        <button id="runBtn" class="run">Run</button>
+        <button id="editBtn" class="edit hidden">Edit Again</button>
+        <button id="copyBtn" class="small">Copy</button>
+        <button id="saveBtn" class="small">Save</button>
+      </div>
+
+      <div class="editor-wrap">
+        <div id="editor" class="editor" contenteditable="true" spellcheck="false" aria-label="Code editor" role="textbox"></div>
+
+        <div id="outputArea" class="output-area hidden" aria-hidden="true">
+          <pre id="output" class="output" role="region" aria-live="polite"></pre>
+        </div>
+      </div>
+
+      <footer class="footer">Java Debugger • Client-side • <span id="footer-credit">Developed by Eslam Atya</span></footer>
+    </section>
+  </main>
+</body>
+</html>
