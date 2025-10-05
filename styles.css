@@ -1,63 +1,187 @@
 :root{
-  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
-  --neon:#00ffc6; --neon-2:#00b3ff; --card:#0f1213; --gutter:#212121; --muted:#bdbdbd;
+  /* ألوان الخلفية الأساسية - أكثر عمقًا */
+  --bg-dark-1: #0A192F; /* Deep Dark Blue */
+  --bg-dark-2: #172A46;
+  --bg-dark-3: #233554;
+  
+  /* ألوان النيون الجديدة - أكثر تباينًا */
+  --neon-primary: #64FFDA; /* Mint Green */
+  --neon-secondary: #00B3FF; /* Bright Blue */
+  
+  /* ألوان أخرى */
+  --card-bg: #112240; /* Card Background */
+  --text-color: #CCD6F6; /* Light Text */
+  --text-muted: #8892B0; /* Muted Text */
+  --error-color: #FF6B6B;
+  
+  /* خطوط */
+  --font-mono: 'Fira Code', "Consolas", "Courier New", monospace;
 }
-*{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{
-  background: radial-gradient(circle at 10% 10%, rgba(0,255,198,0.05), transparent 20%), linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
-  color: #e8f1ef;
-  font-family: "Consolas", "Courier New", monospace;
-  display:flex;align-items:center;justify-content:center;padding:20px;
+
+/* Base Setup */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  /* خلفية مع تدرج وبعض الضوضاء الخفيفة لإضافة عمق */
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(100,255,218,0.06), transparent 25%), 
+    linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2), var(--bg-dark-3));
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  line-height: 1.6;
 }
 
-/* intro */
-.intro{
-  width:100%;max-width:720px;text-align:center;padding:36px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);backdrop-filter: blur(6px);animation: fadeIn .6s ease;
+/* General Elements */
+.hidden { display: none !important; }
+button { transition: all 0.2s ease-in-out; }
+button:hover { filter: brightness(1.15); transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+/* Intro Screen */
+.intro {
+  width: 100%; max-width: 600px; text-align: center; padding: 40px; 
+  border-radius: 16px;
+  /* تأثير زجاجي مع إضاءة خفيفة */
+  background: rgba(17, 34, 64, 0.4); 
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.8s ease forwards;
 }
-.intro-logo{width:96px;height:96px;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto}
-.intro-title{font-size:32px;margin:6px 0;color:var(--neon);letter-spacing:1px;font-weight:700}
-.intro-sub{color:rgba(255,255,255,0.85);margin-bottom:18px}
-.cta{background:linear-gradient(90deg,var(--neon),var(--neon-2));border:none;padding:12px 22px;border-radius:12px;font-weight:700;color:#021;cursor:pointer}
-
-/* app */
-.hidden{display:none}
-.app{width:100%;max-width:1100px}
-.app-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.title-left{display:flex;align-items:center;gap:10px}
-.mini-logo{width:44px;height:44px}
-.app-title{font-size:20px;color:var(--neon);font-weight:700}
-.meta{color:rgba(255,255,255,0.65);font-size:13px}
-
-/* runner layout */
-.runner{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,0.5)}
-.controls{display:flex;gap:8px;align-items:center;margin-bottom:12px}
-.run{background:linear-gradient(90deg,var(--neon),var(--neon-2));border:none;padding:10px 16px;border-radius:10px;font-weight:800;color:#021;cursor:pointer}
-.small{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px 10px;border-radius:8px;cursor:pointer}
-.edit{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px 12px;border-radius:8px;cursor:pointer}
-
-/* editor */
-.editor-wrap{position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);min-height:320px}
-.editor{padding:18px;outline:none;white-space:pre;overflow:auto;height:100%;min-height:320px;font-size:15px;color:#e8f1ef;background:transparent;line-height:1.45}
-.editor:focus{box-shadow: inset 0 0 0 1px rgba(0,255,198,0.06);}
-
-/* output overlay */
-.output-area{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:transparent}
-.output{width:100%;height:100%;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));border-radius:8px;padding:12px;color:var(--neon);font-size:15px;white-space:pre-wrap;overflow:hidden;box-shadow: inset 0 2px 12px rgba(0,0,0,0.4)}
-.output.error{color:#ff6b6b}
-
-/* footer */
-.footer{margin-top:12px;color:rgba(255,255,255,0.65);font-size:13px}
-
-/* animations */
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media(max-width:980px){
-  .intro{padding:20px}
-  .editor-wrap{min-height:260px}
-  .editor{min-height:260px}
+.intro-logo { width: 100px; height: 100px; margin-bottom: 20px; filter: drop-shadow(0 0 8px var(--neon-primary)); }
+.intro-title { font-size: 40px; margin: 10px 0; color: var(--neon-primary); letter-spacing: 2px; font-weight: 700; }
+.intro-sub { color: var(--text-muted); margin-bottom: 30px; font-size: 16px; }
+.cta { 
+  background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary)); 
+  border: none; padding: 14px 30px; border-radius: 12px; font-weight: 700; 
+  color: var(--bg-dark-1); /* لون داكن للزر */
+  cursor: pointer; font-size: 18px;
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.4);
 }
-@media(max-width:520px){
-  .editor{font-size:13px;min-height:200px}
-  .intro-title{font-size:24px}
+
+/* Main App */
+.app { width: 100%; max-width: 1200px; }
+.app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.title-left { display: flex; align-items: center; gap: 12px; }
+.mini-logo { width: 36px; height: 36px; filter: drop-shadow(0 0 3px var(--neon-primary)); }
+.app-title { font-size: 22px; color: var(--neon-primary); font-weight: 700; }
+.meta { color: var(--text-muted); font-size: 14px; }
+
+/* Runner Layout */
+.runner { 
+  background: var(--card-bg); 
+  border-radius: 16px; 
+  padding: 20px; 
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(100, 255, 218, 0.05);
+}
+.controls { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.action-group { margin-left: auto; display: flex; gap: 8px; } /* تجميع أزرار النسخ والحفظ لليمين */
+.action-btn { 
+  border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; 
+  cursor: pointer; font-size: 15px; 
+}
+.run {
+  background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+  color: var(--bg-dark-1);
+}
+.small {
+  background: var(--bg-dark-3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--neon-primary);
+  padding: 8px 12px; border-radius: 8px; font-size: 14px;
+}
+.edit {
+  background: var(--bg-dark-3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  padding: 8px 12px; border-radius: 8px;
+}
+.small:hover, .edit:hover { border-color: var(--neon-primary); }
+
+/* Editor & Output */
+.editor-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--bg-dark-3);
+  min-height: 400px; /* زيادة الطول قليلاً */
+  background: var(--bg-dark-1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.editor {
+  padding: 20px;
+  outline: none;
+  white-space: pre-wrap; /* للسماح بكسر السطر في المحرر */
+  overflow: auto;
+  height: 100%;
+  min-height: 400px;
+  font-size: 16px;
+  color: var(--text-color);
+  background: transparent;
+  line-height: 1.5;
+  transition: box-shadow 0.2s;
+}
+.editor:focus {
+  box-shadow: inset 0 0 0 2px var(--neon-primary);
+}
+/* Placeholder effect for contenteditable */
+.editor:empty:not(:focus)::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* Output Overlay */
+.output-area {
+  position: absolute; inset: 0; 
+  display: flex; align-items: center; justify-content: center; 
+  padding: 20px; 
+  background: rgba(17, 34, 64, 0.95); /* خلفية شبه شفافة لتغطية المحرر */
+  backdrop-filter: blur(2px);
+  transition: opacity 0.3s ease;
+}
+.output {
+  width: 100%; height: 100%; 
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px; padding: 16px;
+  color: var(--neon-primary);
+  font-size: 16px; white-space: pre-wrap;
+  overflow: auto;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+}
+.output.error {
+  color: var(--error-color);
+  border-color: var(--error-color);
+}
+
+/* Footer */
+.footer {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Media Queries */
+@media(max-width: 980px){
+  .editor-wrap { min-height: 300px; }
+  .editor { min-height: 300px; }
+  .app { padding: 0 10px; }
+}
+@media(max-width: 600px){
+  body { padding: 10px; }
+  .intro-title { font-size: 32px; }
+  .app-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .meta { margin-left: 48px; } /* محاذاة مع شعار التطبيق */
+  .editor { font-size: 14px; padding: 15px; }
 }
