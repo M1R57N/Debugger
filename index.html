@@ -1,54 +1,60 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="ar" dir="ltr"> <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Java Debugger — by Eslam Atya</title>
-
+  <title>Java Debugger — Client-Side Runner by Eslam Atya</title>
+  <meta name="description" content="An offline, client-side Java Debugger interface and code runner developed by Eslam Atya." />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!--
-    Project: Java Debugger
-    Developer: Eslam Atya
-    Description: Offline version of the Java Debugger UI (client-side runner)
-    All rights reserved © 2025
-  -->
-
   <div id="intro" class="intro">
-    <img src="assets/logo.svg" alt="logo" class="intro-logo">
+    <img src="assets/logo.svg" alt="Java Debugger Logo" class="intro-logo" loading="lazy">
     <h1 class="intro-title"><span id="typed-name"></span></h1>
-    <div class="intro-sub">by <strong>Eslam Atya</strong></div>
-    <button id="startBtn" class="cta">Start</button>
+    <p class="intro-sub">أداة محاكاة وتشغيل أكواد Java بسيطة • مطور بواسطة <strong>إسلام عطية</strong></p>
+    <button id="startBtn" class="cta" aria-label="Start using the Java Debugger">ابـدأ</button>
   </div>
-
+  
   <main id="app" class="app hidden" role="application">
     <header class="app-header">
       <div class="title-left">
-        <img src="assets/logo.svg" alt="" class="mini-logo">
+        <img src="assets/logo.svg" alt="App Logo" class="mini-logo">
         <div class="app-title">Java Debugger</div>
       </div>
-      <div class="meta">Developed by <strong>Eslam Atya</strong></div>
+      <div class="meta">إصدار العميل 1.0 • Eslam Atya</div>
     </header>
 
     <section class="runner">
       <div class="controls">
-        <button id="runBtn" class="run">Run</button>
-        <button id="editBtn" class="edit hidden">Edit Again</button>
-        <button id="copyBtn" class="small">Copy</button>
-        <button id="saveBtn" class="small">Save</button>
-      </div>
-
-      <div class="editor-wrap">
-        <div id="editor" class="editor" contenteditable="true" spellcheck="false" aria-label="Code editor" role="textbox"></div>
-
-        <div id="outputArea" class="output-area hidden" aria-hidden="true">
-          <pre id="output" class="output" role="region" aria-live="polite"></pre>
+        <button id="runBtn" class="action-btn run" aria-keyshortcuts="Control+Enter">تشغيل (Ctrl+Enter)</button>
+        <button id="editBtn" class="action-btn edit hidden">تعديل مرة أخرى</button>
+        <div class="action-group">
+          <button id="copyBtn" class="small" title="Copy Output">نسخ 📋</button>
+          <button id="saveBtn" class="small" title="Save Output">حفظ 💾</button>
         </div>
       </div>
 
-      <footer class="footer">Java Debugger • Client-side • <span id="footer-credit">Developed by Eslam Atya</span></footer>
+      <div class="editor-wrap">
+        <div 
+          id="editor" 
+          class="editor" 
+          data-placeholder="// أدخل كود Java/JavaScript الخاص بك هنا. (مثال: System.out.println('Hello, World!');) **ملاحظة: هذا محاكي جافاسكريبت**" 
+          spellcheck="false" 
+          aria-label="Code editor" 
+          role="textbox"
+          tabindex="0"
+          autofocus
+        ></div>
+
+        <div id="outputArea" class="output-area hidden" aria-hidden="true">
+          <pre id="output" class="output" role="region" aria-live="polite">Output will appear here...</pre>
+        </div>
+      </div>
+
+      <footer class="footer">Java Debugger • Client-side Runner • &copy; 2025 <span id="footer-credit">Developed by Eslam Atya</span></footer>
     </section>
   </main>
 </body>
