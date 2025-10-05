@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editor.focus();
     // place a sample
     if (!editor.textContent.trim()) {
-      editor.textContent = '// Example:\nconsole.log("The answer is " + (2*5));';
+      editor.textContent = '';
     }
   });
 
