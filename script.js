@@ -40,11 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     app.classList.remove('hidden');
     // focus editor
     editor.focus();
-    // place a sample
-    if (!editor.textContent.trim()) {
-      editor.textContent = '';
-    }
-  });
+
 
   // helper to get code from contenteditable
   function getCode() {
